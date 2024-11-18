@@ -18,6 +18,30 @@
             padding: 20px;
             text-align: center;
         }
+        nav {
+            background-color: #444;
+            color: white;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
         section {
             padding: 20px;
             margin: 20px;
@@ -48,19 +72,30 @@
         .contact a:hover {
             text-decoration: underline;
         }
+        #contact {
+            padding-bottom: 40px; /* Adds space at the bottom of the Contact section */
+        }
     </style>
 </head>
 <body>
 
-    <section id="about-me">
-    <h2>About Me</h2>
-    <img src="about-me-image.jpg" alt="A photo of Maksim Stroikin" style="max-width: 100%; height: auto; border-radius: 10px;">
-    <p>Insert description here.</p>
-    </section>
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+        <p>This is a showcase of my projects.</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about-me">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <section id="about-me">
         <h2>About Me</h2>
-        <p>Insert description here.</p>
+        <img src="about-me-image.jpg" alt="A photo of Maksim Stroikin" style="max-width: 100%; height: auto; border-radius: 10px;">
+        <p>I am a second-year engineering systems and computing student with a passion for embedded systems and programming.</p>
     </section>
 
     <section id="projects" class="projects">
@@ -88,13 +123,11 @@
 
     <section id="contact">
         <h2>Contact</h2>
-        <p>Insert contact information here (e.g., email, phone, LinkedIn, etc.).</p>
+        <p>Email: maksim.stroikin@example.com</p>
+        <p>Phone: (123) 456-7890</p>
+        <p><a href="https://www.linkedin.com/in/maksim-stroikin/">LinkedIn</a></p>
     </section>
 
-    #contact {
-    padding-bottom: 40px; /* Adjust this value as needed */
-}
-    
     <footer>
         <p>Portfolio by Maksim Stroikin</p>
     </footer>
