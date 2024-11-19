@@ -14,9 +14,33 @@
         }
         header {
             background-color: #333;
-            color: white;
+            color: rgb(255, 255, 255);
             padding: 20px;
             text-align: center;
+        }
+        nav {
+            background-color: #444;
+            color: white;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
         }
         section {
             padding: 20px;
@@ -30,24 +54,69 @@
             position: fixed;
             width: 100%;
             bottom: 0;
+            z-index: 1000;
         }
         .projects .project {
             margin-bottom: 20px;
         }
-        .project h3 {
-            margin-top: 10px;
-        }
-        .image-container {
-            position: relative;
-            max-width: 300px;
-            margin: auto;
-        }
-        .image-container img {
+        .project img {
             width: 100%;
             height: auto;
-            display: block;
+        }
+        .project-description h3 {
+            margin: 0; /* Removes default margin from heading */
+            font-size: 1.5em; /* Adjust heading size to fit image context */
+        }
+        .contact a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        #contact {
+            padding-bottom: 80px; /* Adds space at the bottom of the Contact section */
+        }
+
+        .projects {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+
+        .project {
+            display: flex; /* Aligns image and description side by side */
+            align-items: flex-start; /* Aligns items to the top of the container */
+            gap: 20px; /* Adjust spacing between text and image */
+        }
+
+        .project-description {
+            display: flex;
+            flex-direction: column; /* Allows vertical alignment of the heading and description */
+            justify-content: flex-start; /* Ensures content starts at the top */
+            max-height: 100%; /* Prevents description from overflowing beyond image height */
+            overflow: hidden; /* Hides overflowing content if it's too long */
+            text-align: left; /* Align text to the left */
+        }
+
+        .image-container {
+        margin-left: 20px; /* 20px margin from the left edge of the screen */
+        border: 5px solid #000000; /* 5px black frame around the image */
+        border-radius: 15px; /* Adds curvature to the image frame */
+        position: relative;
+        width: 250px; /* Width of the image container */
+        height: 250px; /* Height of the image container */
+        overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 10px;
         }
+
         .arrow {
             position: absolute;
             top: 50%;
@@ -57,105 +126,186 @@
             background-color: rgba(255, 255, 255, 0.7);
             padding: 10px;
             cursor: pointer;
+            z-index: 10;
         }
+
         .arrow-left {
-            left: 10px;
+            left: -30px; /* 2px away from the left edge of the image frame */
         }
+
         .arrow-right {
-            right: 10px;
+            right: -30px; /* 2px away from the right edge of the image frame */
         }
-        .contact a {
-            color: #1a73e8;
-            text-decoration: none;
-        }
-        .contact a:hover {
-            text-decoration: underline;
-        }
+
+
+
     </style>
 </head>
 <body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            
+            // Variables for Project 1
+            var project1Title = "Project 1";
+            var project1Description = `Insert project description here.`;
+            
+            /*
+            var project1Description = `Designed and implemented a 4-bit Arithmetic Logic Unit (ALU) using VHDL,
+            incorporating half adder, full adder, logic circuit, B-logic input and arithmetic circuit modules.
+            Created a testbench and simulated the circuit using Xilinx Foundation tools to verify functionality.
+            Mapped the 4-bit ALU onto the NEXYS 3 FPGA board and connected its output to the 7 segment display via a
+            decoder.`;
+            */
+            var project2Title = "Project 2";
+            var project2Description = `Insert project description here.`;
+
+            var project3Title = "Project 3";
+            var project3Description = `Insert project description here.`;
+
+            // Insert the title and description into the HTML
+            document.getElementById('project1-title').innerText = project1Title;
+            document.getElementById('project1-description').innerText = project1Description;
+
+            document.getElementById('project2-title').innerText = project2Title;
+            document.getElementById('project2-description').innerText = project2Description;
+
+            document.getElementById('project3-title').innerText = project3Title;
+            document.getElementById('project3-description').innerText = project3Description;
+            
+            // Define image paths as an object
+            const images = {
+                aboutme: "Images/Headshot.png", // Update to relative path
+                project1: ["Images/Project1-image1.png", "Images/Project1-image2.png", "Images/Project1-image3.png"],
+                project2: ["Images/Project2-image1.png", "Images/Project2-image2.png", "Images/Project2-image3.png"],
+                project3: ["Images/Project3-image1.png", "Images/Project3-image2.png", "Images/Project3-image3.png"]
+            };
+    
+            // Load the "About Me" image
+            document.getElementById("aboutme-image").src = images.aboutme;
+    
+            // Load project images dynamically
+            for (const [projectId, imgPaths] of Object.entries(images)) {
+                if (projectId !== "aboutme") {
+                    const container = document.getElementById(`${projectId}-images`);
+                    imgPaths.forEach((src, index) => {
+                        const img = container.querySelector(`#${projectId}-image${index + 1}`);
+                        img.src = src; 
+                        img.style.display = index === 0 ? "block" : "none"; // Show the first image
+                    });
+                }
+            }
+        });
+    
+        // Function to change images
+        function changeImage(projectId, direction) {
+            // Select images for the given project
+            const images = document.querySelectorAll(`#${projectId}-images img`);
+            const totalImages = images.length;
+    
+            // Find the currently visible image
+            let currentImageIndex = Array.from(images).findIndex(img => img.style.display === "block");
+            if (currentImageIndex === -1) currentImageIndex = 0; // Fallback if none visible
+    
+            // Calculate the next image index
+            const nextImageIndex = (currentImageIndex + direction + totalImages) % totalImages;
+    
+            // Update image visibility
+            images.forEach((img, idx) => img.style.display = idx === nextImageIndex ? "block" : "none");
+        }
+    
+        // Ensure initial setup for image containers
+        document.querySelectorAll('.image-container').forEach(container => {
+            const images = container.querySelectorAll('img');
+            images.forEach((img, index) => {
+                img.style.display = index === 0 ? "block" : "none"; // Only first image visible initially
+            });
+        });
+    </script>
+    
 
     <header>
         <h1>Welcome to My Portfolio</h1>
         <p>This is a showcase of my projects.</p>
     </header>
 
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
+    <nav>
+        <ul>
+            <li><a href="#about-me">About Me</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
-        <!-- Project 1 -->
-        <div class="project">
-            <h3>Project 1</h3>
-            <div class="image-container" id="project1-images">
-                <img src="project1-image1.jpg" alt="Project 1 Image" class="project-image">
-                <span class="arrow arrow-left" onclick="changeImage('project1', -1)">&#10094;</span>
-                <span class="arrow arrow-right" onclick="changeImage('project1', 1)">&#10095;</span>
-            </div>
-            <p>Insert project description here.</p>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project">
-            <h3>Project 2</h3>
-            <div class="image-container" id="project2-images">
-                <img src="project2-image1.jpg" alt="Project 2 Image" class="project-image">
-                <span class="arrow arrow-left" onclick="changeImage('project2', -1)">&#10094;</span>
-                <span class="arrow arrow-right" onclick="changeImage('project2', 1)">&#10095;</span>
-            </div>
-            <p>Insert project description here.</p>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project">
-            <h3>Project 3</h3>
-            <div class="image-container" id="project3-images">
-                <img src="project3-image1.jpg" alt="Project 3 Image" class="project-image">
-                <span class="arrow arrow-left" onclick="changeImage('project3', -1)">&#10094;</span>
-                <span class="arrow arrow-right" onclick="changeImage('project3', 1)">&#10095;</span>
-            </div>
-            <p>Insert project description here.</p>
-        </div>
-
+    <section id="about-me">
+        <h2>About Me</h2>
+        <img id="aboutme-image" src="" alt="A photo of Maksim Stroikin" style="max-width: 100%; height: auto; border-radius: 10px;">
+        <p>I am a second-year engineering systems and computing student with a passion for embedded systems and programming.</p>
     </section>
+
+ <!-- Projects Section -->
+<section id="projects" class="projects">
+    <h2>Projects</h2>
+
+    <!-- Project 1 -->
+    <div class="project">
+        <div class="project-description">
+            <h3 id="project1-title"></h3>
+            <p id="project1-description"></p>
+        </div>
+        <div class="image-container" id="project1-images">
+            <img id="project1-image1" src="" alt="Project 1 Image 1" class="project-image">
+            <img id="project1-image2" src="" alt="Project 1 Image 2" class="project-image">
+            <img id="project1-image3" src="" alt="Project 1 Image 3" class="project-image">
+            <span class="arrow arrow-left" onclick="changeImage('project1', -1)">&#10094;</span>
+            <span class="arrow arrow-right" onclick="changeImage('project1', 1)">&#10095;</span>
+        </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project">
+        <div class="project-description">
+            <h3 id="project2-title"></h3>
+            <p id="project2-description"></p>
+        </div>
+        <div class="image-container" id="project2-images">
+            <img id="project2-image1" src="" alt="Project 2 Image 1" class="project-image">
+            <img id="project2-image2" src="" alt="Project 2 Image 2" class="project-image">
+            <img id="project2-image3" src="" alt="Project 2 Image 3" class="project-image">
+            <span class="arrow arrow-left" onclick="changeImage('project2', -1)">&#10094;</span>
+            <span class="arrow arrow-right" onclick="changeImage('project2', 1)">&#10095;</span>
+        </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project">
+        <div class="project-description">
+            <h3 id="project3-title"></h3>
+            <p id="project3-description"></p>
+        </div>
+        <div class="image-container" id="project3-images">
+            <img id="project3-image1" src="" alt="Project 3 Image 1" class="project-image">
+            <img id="project3-image2" src="" alt="Project 3 Image 2" class="project-image">
+            <img id="project3-image3" src="" alt="Project 3 Image 3" class="project-image">
+            <span class="arrow arrow-left" onclick="changeImage('project3', -1)">&#10094;</span>
+            <span class="arrow arrow-right" onclick="changeImage('project3', 1)">&#10095;</span>
+        </div>
+    </div>
+
+</section>
 
     <section id="contact">
         <h2>Contact</h2>
-        <p>Insert contact information here (e.g., email, phone, LinkedIn, etc.).</p>
+        <p>Email: mstroiki@uoguelph.ca</p>
+        <p>Phone: (437) 557-6980</p>
+        <p><a href="https://www.linkedin.com/in/maksim-stroikin/">LinkedIn</a></p>
     </section>
 
     <footer>
         <p>Portfolio by Maksim Stroikin</p>
     </footer>
 
-    <script>
-        // Function to change images
-        function changeImage(projectId, direction) {
-            const images = document.querySelectorAll(`#${projectId}-images img`);
-            let currentImageIndex = Array.from(images).findIndex(img => img.style.display !== 'none');
-            
-            // If no visible image, default to the first image
-            if (currentImageIndex === -1) {
-                currentImageIndex = 0;
-            }
-
-            const totalImages = images.length;
-            currentImageIndex = (currentImageIndex + direction + totalImages) % totalImages;
-
-            // Hide all images
-            images.forEach(img => img.style.display = 'none');
-
-            // Show the next image
-            images[currentImageIndex].style.display = 'block';
-        }
-
-        // Initialize by showing only the first image of each project
-        document.querySelectorAll('.image-container').forEach(container => {
-            const images = container.querySelectorAll('img');
-            images.forEach((img, index) => {
-                if (index !== 0) img.style.display = 'none';
-            });
-        });
-    </script>
-
 </body>
 </html>
+
