@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My Portfolio</title>
-    <style>
+        <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #f4f4f9; /* Light grey background */
+            color: #333333; /* Dark grey text */
         }
         header {
             background-color: #333;
@@ -78,44 +78,55 @@
             padding-bottom: 80px; /* Adds space at the bottom of the Contact section */
         }
 
+        #about-me {
+            text-align: center; /* Center-align content in the "About Me" section */
+        }
+
+        #about-me h2 {
+            margin-bottom: 10px; /* Adds some spacing between the title and the image */
+        }
+
+        #aboutme-image {
+            width: 200px; /* Set a fixed width for the image */
+            height: auto; /* Maintain the image's aspect ratio */
+            object-fit: cover; /* Ensures the image scales proportionally */
+            border-radius: 10px; /* Optional: Rounded corners for the image */
+            margin-bottom: 20px; /* Adds space between the image and the paragraph */
+            display: inline-block; /* Ensures the image behaves predictably within centered content */
+        }
+
         .projects {
             display: flex;
-            flex-direction: column;
-            gap: 20px;
+            flex-direction: column; /* Stack projects vertically */
+            gap: 40px; /* Add vertical spacing between projects */
         }
-
 
         .project {
-            display: flex; /* Aligns image and description side by side */
-            align-items: flex-start; /* Aligns items to the top of the container */
-            gap: 20px; /* Adjust spacing between text and image */
-        }
-
-        .project-description {
-            display: flex;
-            flex-direction: column; /* Allows vertical alignment of the heading and description */
-            justify-content: flex-start; /* Ensures content starts at the top */
-            max-height: 100%; /* Prevents description from overflowing beyond image height */
-            overflow: hidden; /* Hides overflowing content if it's too long */
-            text-align: left; /* Align text to the left */
+            display: flex; /* Align the image and description side by side */
+            align-items: flex-start; /* Align items to the top */
+            gap: 20px; /* Space between text and image */
         }
 
         .image-container {
-        margin-left: 20px; /* 20px margin from the left edge of the screen */
-        border: 5px solid #000000; /* 5px black frame around the image */
-        border-radius: 15px; /* Adds curvature to the image frame */
-        position: relative;
-        width: 250px; /* Width of the image container */
-        height: 250px; /* Height of the image container */
-        overflow: hidden;
+            margin-left: auto; /* Align the image to the right side */
+            border: 5px solid #1A1A40; /* Adds a border for better visibility */
+            border-radius: 10px; /* Rounded corners */
+            width: 500px; /* Fixed width for the images */
+            height: 300px; /* Fixed height for the images */
+            overflow: hidden; /* Ensures the image does not overflow its container */
         }
 
         .image-container img {
-            width: 100%;
+            width: 100%; /* Ensures the image fits within the container */
             height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
+            object-fit: cover; /* Maintains aspect ratio and fills the container */
         }
+
+        .project-description {
+            flex: 1; /* Allows the description to take up available space */
+            text-align: left; /* Align the text to the left */
+        }
+
 
         .arrow {
             position: absolute;
@@ -148,21 +159,40 @@
             
             
             // Variables for Project 1
-            var project1Title = "Project 1";
-            var project1Description = `Insert project description here.`;
+            var project1Title = "4-bit Arithmetic Logic Unit";
+            var project1Description = `During my Digital Systems Design course, I designed a 4-bit Arithmetic Logic Unit (ALU) 
+            using VHDL as part of a datapath design for digital systems. The ALU was modularly designed incorporating over 32 
+            components including a half adder, full adder, logic circuit, B-logic input, and arithmetic circuit modules making
+            the design efficient and easily scalable. Using Xilinx Foundation tools, I developed a testbench to validate the 
+            ALU’s functionality and generated simulated waveforms to verify the logic and functionality of the design. Finally
+            , I mapped the 4-bit ALU onto the NEXYS 3 FPGA board, with 8 of the board’s switches acting as an input for A and
+            B, buttons acting as selection lines, and a 7 segment showing the output in the form of hexadecimal digits. The
+            resulting ALU could successfully perform arithmetic and logic functions based on the user's input including
+            addition, subtraction, gate logic operations, transfers, and more, demonstrating a fully functional and efficient
+            design. `;
             
-            /*
-            var project1Description = `Designed and implemented a 4-bit Arithmetic Logic Unit (ALU) using VHDL,
-            incorporating half adder, full adder, logic circuit, B-logic input and arithmetic circuit modules.
-            Created a testbench and simulated the circuit using Xilinx Foundation tools to verify functionality.
-            Mapped the 4-bit ALU onto the NEXYS 3 FPGA board and connected its output to the 7 segment display via a
-            decoder.`;
-            */
-            var project2Title = "Project 2";
-            var project2Description = `Insert project description here.`;
+            var project2Title = "Arduino-Based Pinball Machine";
+            var project2Description = `As a member of Guelph’s Engineers for a Sustainable World Chapter, I collaborated with
+            a team of 4 other students to create an Arduino-based pinball machine designed to automate the collection of
+            aluminum pop tabs. I created a circuit featuring six sensors, a motor, two speakers, 30 LEDs, a display, and an
+            ESP32 Wi-Fi module to track scores and transmit data to a dedicated website. I programmed this system in C++ using
+            the Arduino IDE, integrating sound effects, LED animations, and scorekeeping as well as their transmission to a
+            dedicated website. All electronic as well as any 3D-printed and metal components, were housed in a custom wooden
+            frame. This machine was then able to collect over 1,000 grams of aluminum which could then be donated to the Royal
+            Canadian Legion, helping support individuals with disabilities.`;
 
-            var project3Title = "Project 3";
-            var project3Description = `Insert project description here.`;
+            var project3Title = "JavaFX Two-Player Game Team Project";
+            var project3Description = `As part of the Object Oriented Programming Course, I led a team of 3 students to develop
+            a multiplayer turn-based strategy game using JavaFX.  The game featured randomly generated maps, character selection,
+            and file reading/writing functionality to save player progress. In addition, by utilizing my knowledge of
+            object-oriented programming in Java I was able to implement player selection allowing 2 to 4 players, through an
+            implemented menu with detailed instructions, and a user-friendly interface. I ensured good communication, organization,
+            and coordination were maintained throughout the project with the use of GitHub. This allowed us to deliver each of the
+            game’s stages before the deadline and go beyond the requirements. As a result, I earned a grade of 100% for the project
+            and a 96% final grade in the course.`;
+
+            var project4Title = "Autonomous Vehicle Design Project";
+            var project4Description = `Insert project description here.`;
 
             // Insert the title and description into the HTML
             document.getElementById('project1-title').innerText = project1Title;
@@ -173,13 +203,17 @@
 
             document.getElementById('project3-title').innerText = project3Title;
             document.getElementById('project3-description').innerText = project3Description;
+
+            document.getElementById('project4-title').innerText = project4Title;
+            document.getElementById('project4-description').innerText = project4Description;
             
             // Define image paths as an object
             const images = {
                 aboutme: "Images/Headshot.png", // Update to relative path
                 project1: ["Images/Project1-image1.png", "Images/Project1-image2.png", "Images/Project1-image3.png"],
                 project2: ["Images/Project2-image1.png", "Images/Project2-image2.png", "Images/Project2-image3.png"],
-                project3: ["Images/Project3-image1.png", "Images/Project3-image2.png", "Images/Project3-image3.png"]
+                project3: ["Images/Project3-image1.png", "Images/Project3-image2.png", "Images/Project3-image3.png"],
+                project4: ["Images/Project4-image1.png", "Images/Project4-image2.png", "Images/Project4-image3.png"]
             };
     
             // Load the "About Me" image
@@ -293,13 +327,28 @@
         </div>
     </div>
 
+    <!-- Project 4 -->
+    <div class="project">
+        <div class="project-description">
+            <h3 id="project4-title"></h3>
+            <p id="project4-description"></p>
+        </div>
+        <div class="image-container" id="project4-images">
+            <img id="project4-image1" src="" alt="Project 4 Image 1" class="project-image">
+            <img id="project4-image2" src="" alt="Project 4 Image 2" class="project-image">
+            <img id="project4-image3" src="" alt="Project 4 Image 3" class="project-image">
+            <span class="arrow arrow-left" onclick="changeImage('project3', -1)">&#10094;</span>
+            <span class="arrow arrow-right" onclick="changeImage('project3', 1)">&#10095;</span>
+        </div>
+    </div>
+    
 </section>
 
     <section id="contact">
         <h2>Contact</h2>
         <p>Email: mstroiki@uoguelph.ca</p>
         <p>Phone: (437) 557-6980</p>
-        <p><a href="https://www.linkedin.com/in/maksim-stroikin/">LinkedIn</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/maksim-stroikin/">LinkedIn</a></p>
     </section>
 
     <footer>
