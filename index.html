@@ -157,6 +157,23 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             
+            var aboutmeTitle = "About Me";
+            var aboutmeDescription = `I am a second-year Engineering Systems and Computing (Co-op) student at the University of Guelph,
+            with a strong passion for mechatronics and embedded systems. 
+            
+            During my involvement with Guelph’s Chapter of Engineers for Sustainable World and University of Guelph’s robotic team, I 
+            have applied my problem solving, PCL programming and design skills to address real-world challenges including assisting 
+            my team’s software division in preparation  for the Canadian International Rover Challenge. Additionally, as a second-year
+            representative in Guelph’s Engineering Society, I actively advocate for the needs of my peers, demonstrating my leadership
+            abilities. 
+            
+            I am committed to continuous learning and growth as demonstrated by my participation in Google Developer Club 
+            workshops, attendance of several conferences across Canada, as well as obtaining certificates such as Guelph Engineering 
+            Leadership Program Certificate of Accomplishment. 
+            
+            I am eager to apply my technical expertise and previous experience in 
+            clubs, volunteering, and work to drive innovation in the engineering industry.
+            `;
             
             // Variables for Project 1
             var project1Title = "4-bit Arithmetic Logic Unit";
@@ -192,8 +209,17 @@
             and a 96% final grade in the course.`;
 
             var project4Title = "Autonomous Vehicle Design Project";
-            var project4Description = `Insert project description here.`;
+            var project4Description = `In my Engineering Design I course, I worked in a 5 member multidisciplinary team to design 
+            and program an autonomous vehicle. By using a Meccano kit, electric powered motors as well as Arduino and ATMega328 
+            microcontroller we constructed the vehicle and I implemented control functionality by utilizing my  PCL programming 
+            abilities. By identifying and addressing inefficiencies in the design, I improved the vehicle's speed by over 50%, 
+            completing the project seven days ahead of schedule.  This was achieved through maintaining effective communication, 
+            organization, and effective coordination allowing each team member to utilize their strengths accordingly. As a result, 
+            our vehicle was able to fully traverse the course in under 6.5 seconds while weighing under 1080 grams.`;
 
+            var project1Title 
+            var project1Title 
+            
             // Insert the title and description into the HTML
             document.getElementById('project1-title').innerText = project1Title;
             document.getElementById('project1-description').innerText = project1Description;
@@ -206,10 +232,13 @@
 
             document.getElementById('project4-title').innerText = project4Title;
             document.getElementById('project4-description').innerText = project4Description;
+
+            document.getElementById('aboutme-title').innerText = aboutmeTitle;
+            document.getElementById('aboutme-description').innerText = aboutmeDescription;
             
             // Define image paths as an object
             const images = {
-                aboutme: "Images/Headshot.png", // Update to relative path
+                aboutme: "Images/Headshot.jpg", // Update to relative path
                 project1: ["Images/Project1-image1.png", "Images/Project1-image2.png", "Images/Project1-image3.png"],
                 project2: ["Images/Project2-image1.png", "Images/Project2-image2.png", "Images/Project2-image3.png"],
                 project3: ["Images/Project3-image1.png", "Images/Project3-image2.png", "Images/Project3-image3.png"],
@@ -259,10 +288,11 @@
     </script>
     
 
-    <header>
-        <h1>Welcome to My Portfolio</h1>
-        <p>This is a showcase of my projects.</p>
-    </header>
+    <section id="about-me">
+        <h2 id="aboutme-title"></h2>
+        <img id="aboutme-image" src="" alt="A photo of Maksim Stroikin" style="max-width: 100%; height: auto; border-radius: 10px;">
+        <p id="aboutme-description"></p>
+    </section>
 
     <nav>
         <ul>
